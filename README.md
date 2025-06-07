@@ -5,19 +5,25 @@
 
 ## Overview
 
-This is a modern, responsive, dark-mode-only demo webpage called **bambusnetz**. It demonstrates a clean layout, a fixed animated footer with an extended Impressum, and interactive placeholder elements. The site is designed for easy customization and learning.
+**bambusnetz** is a modern, responsive demo webpage featuring both dark and light modes. It demonstrates a clean layout, animated fixed footer with extended Impressum, interactive placeholder elements, and a focus on accessibility and customization. The site is ideal for learning or as a starting point for your own projects.
 
 ---
 
 ## Features
 
-- **Dark Mode Only:** All styles use a dark color palette for comfortable viewing.
-- **Responsive Layout:** Works well on desktop and mobile devices.
-- **Header with Dropdown Navigation:** Use the dropdown in the header to switch between Home and About pages.
-- **Animated Footer:** The footer is fixed to the bottom and pops up on hover or focus, revealing the Impressum (legal notice).
-- **Impressum:** Contains extended legal information, only visible when the footer is hovered or focused.
-- **Image Placeholders:** Each content row has an image placeholder with a subtle, randomized hover animation. You can use your own images by placing them in the project folder and referencing them in the HTML.
-- **No JavaScript Frameworks:** Only vanilla HTML, CSS, and a small amount of JavaScript.
+- **Dark & Light Mode:**  
+  - The site defaults to dark mode for comfortable viewing.
+  - Users can toggle between dark and light mode using the round button (☀️/🌙) at the bottom left of the page.
+  - Light mode uses a soft gray color palette (not pure white) for reduced eye strain.
+  - The current mode is remembered across pages and browser sessions.
+  - Smooth fade-in and fade transition effects are applied when switching modes, including a fade between the sun and moon icons.
+- **Responsive Layout:** Works seamlessly on desktop and mobile devices.
+- **Header with Dropdown Navigation:** Easily switch between Home and About pages using the header dropdown.
+- **Animated Footer:** Fixed at the bottom, the footer pops up on hover or focus to reveal the Impressum (legal notice).
+- **Extended Impressum:** Legal information is hidden by default and shown on footer interaction.
+- **Image Placeholders:** Content rows include image placeholders with subtle, randomized hover animations. You can easily swap in your own images.
+- **Smooth Fade-In Animation:** The entire page content fades in on load for a polished look.
+- **No JavaScript Frameworks:** Built with vanilla HTML, CSS, and minimal JavaScript for interactivity.
 
 ---
 
@@ -26,6 +32,12 @@ This is a modern, responsive, dark-mode-only demo webpage called **bambusnetz**.
 ### Navigation
 
 - Use the dropdown menu in the header to switch between the Home and About pages.
+
+### Dark & Light Mode
+
+- Click the round button at the bottom left to toggle between dark and light mode.
+- The icon will fade between ☀️ (dark mode) and 🌙 (light mode).
+- Your preference is saved and will persist across all pages and browser sessions.
 
 ### Footer & Impressum
 
@@ -47,7 +59,7 @@ This is a modern, responsive, dark-mode-only demo webpage called **bambusnetz**.
 
 ## Customization
 
-- **Colors and Layout:** Adjust variables in `style.css` under the `:root` selector.
+- **Colors and Layout:** Adjust variables in `style.css` under the `:root` selector for dark mode and in the `.light-mode` section for light mode.
 - **Content:** Edit `index.html` and `about.html` to change text, add sections, or update images.
 - **Legal Info:** Update the Impressum in the footer of each HTML file as needed for your project.
 
@@ -69,6 +81,7 @@ basic-webpage/
 
 - The footer and Impressum can be accessed with keyboard navigation (focus).
 - The dropdown navigation is accessible and labeled.
+- Sufficient color contrast for readability in both modes.
 
 ---
 
