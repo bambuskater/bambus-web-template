@@ -1,0 +1,156 @@
+<!--
+    NOTE: This webpage (index.html) was mostly designed and organized with the help of AI (GitHub Copilot).
+    Please review and adapt as needed for your own use.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - bambusnetz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 0 2rem;
+            background: none;
+        }
+        .header-bar > * {
+            flex-shrink: 0;
+        }
+        .modern-dropdown {
+            padding: 0.5em 1.2em;
+            border-radius: 1.5em;
+            border: none;
+            background: var(--nav-bg);
+            color: var(--primary-text);
+            font-size: 1.1rem;
+            font-family: inherit;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.3s, color 0.3s;
+            outline: none;
+            cursor: pointer;
+        }
+        .modern-dropdown:focus {
+            background: var(--nav-hover-bg);
+            color: var(--nav-hover-text);
+        }
+        @media (max-width: 800px) {
+            .header-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+        }
+        .home-content {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--primary-text);
+        }
+        @media (max-width: 600px) {
+            .home-content {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+        .placeholder-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .placeholder-image,
+        .placeholder-text {
+            flex: 1 1 220px;
+            min-width: 180px;
+            max-width: 340px;
+            height: 18vw;
+            max-height: 180px;
+            background: var(--placeholder-bg);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .placeholder-text {
+            background: var(--card-bg);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.03em;
+            text-shadow: 0 2px 8px #000a, 0 1px 0 #222;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bar">
+            <h1 style="margin: 0;">bambusnetz</h1>
+            <select id="page-select" class="modern-dropdown" aria-label="Page selection">
+                <option value="index.html">Home</option>
+                <option value="about.html">About</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Home</h2>
+            <div class="home-content">
+                <div class="placeholder-row">
+                    <div class="placeholder-image" style="background-image: url('my-image.jpg');"></div>
+                    <div class="placeholder-text">Text</div>
+                </div>
+                <div class="placeholder-row">
+                    <div class="placeholder-image"></div>
+                    <div class="placeholder-text">Text</div>
+                </div>
+                <div class="placeholder-row">
+                    <div class="placeholder-image"></div>
+                    <div class="placeholder-text">Text</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Basic Webpage. All rights reserved.</p>
+        <p id="impressum">
+            Impressum: bambusnetz, Example Street 1, 12345 City, Country<br>
+            Contact: info@bambusnetz.example<br>
+            VAT ID: DE123456789<br>
+            Responsible for content according to § 55 Abs. 2 RStV: Max Mustermann, Example Street 1, 12345 City<br>
+            This website is a demonstration project. All data is fictitious.<br>
+            <strong>Extended Impressum:</strong> <br>
+            Commercial Register: Amtsgericht Musterstadt, HRB 123456<br>
+            Managing Director: Max Mustermann<br>
+            Supervisory Authority: Bezirksregierung Musterstadt<br>
+            Platform of the EU Commission regarding online dispute resolution: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color:#fafafa;">https://ec.europa.eu/consumers/odr/</a>
+        </p>
+    </footer>
+    <script>
+        // Page selection dropdown navigation
+        const pageSelect = document.getElementById('page-select');
+        pageSelect.addEventListener('change', function() {
+            if (location.pathname.endsWith(this.value)) return;
+            window.location.href = this.value;
+        });
+        // Set dropdown to current page
+        pageSelect.value = location.pathname.split('/').pop() || 'index.html';
+    </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+/*
+    NOTE: This stylesheet and much of the webpage design was generated and organized with the help of AI (GitHub Copilot).
+    Please review and adapt as needed for your own use.
+*/
+
+/* filepath: c:\Users\sc\Desktop\New folder (5)\style.css */
+
+/* Remove all light mode variables and styles, enforce dark mode as default */
+:root {
+    --primary-bg: #181a1b;
+    --primary-text: #f0f0f0;
+    --accent: #4CAF50;
+    --header-bg: #232526cc;
+    --nav-bg: rgba(80, 80, 80, 0.25);
+    --nav-hover-bg: #444;
+    --nav-hover-text: #fff;
+    --footer-bg: #111;
+    --footer-text: #ccc;
+    --placeholder-bg: #333;
+    --placeholder-text: #fafafa;
+    --card-bg: #232526;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+/* Always use dark mode styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--primary-bg);
+    color: var(--primary-text);
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--primary-text);
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 12px var(--card-shadow);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: none;
+}
+
+nav a {
+    color: var(--primary-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5em 1.2em;
+    border-radius: 1.5em;
+    background: var(--nav-bg);
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+}
+
+nav a:hover,
+nav a:focus {
+    background: var(--nav-hover-bg);
+    color: var(--nav-hover-text);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+main {
+    flex: 1 0 auto;
+    padding: 2vw;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    background: none;
+}
+
+/* Subtle footer pop-up with cooldown */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    min-height: 0;
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1rem 0 0.2rem 0;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+    z-index: 10;
+    transition: transform 0.5s ease, background 0.3s;
+    transform: translateY(40%);
+    will-change: transform;
+    margin: 0;
+    border-bottom: 0;
+    overflow: hidden;
+}
+
+footer.cooldown {
+    pointer-events: auto;
+}
+
+footer:hover,
+footer:focus-within {
+    transform: translateY(0%);
+}
+
+footer #impressum {
+    display: block !important;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    pointer-events: none;
+}
+
+footer:hover #impressum,
+footer:focus-within #impressum {
+    opacity: 1;
+    max-height: 500px;
+    pointer-events: auto;
+}
+
+/* Placeholder styles */
+.placeholder-row {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.placeholder-image,
+.placeholder-text {
+    flex: 1 1 220px;
+    min-width: 180px;
+    max-width: 340px;
+    height: 18vw;
+    max-height: 180px;
+    background: var(--placeholder-bg);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.placeholder-image {
+    background: var(--placeholder-bg) center center / cover no-repeat;
+    transition:
+        box-shadow 0.3s,
+        transform 0.4s cubic-bezier(.4,2,.6,1),
+        filter 0.3s;
+    cursor: pointer;
+}
+
+/* More subtle and random hover animation for image placeholders */
+.placeholder-image:hover {
+    /* Slight random movement and scale, less visible */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    filter: brightness(1.03) blur(0.2px);
+    outline: 1px solid var(--accent);
+    outline-offset: -2px;
+    /* Randomize transform using CSS variables set by JS */
+    transform: scale(var(--ph-scale,1.01)) rotate(var(--ph-rot,0deg)) translate(var(--ph-x,0px), var(--ph-y,0px));
+}
+
+.placeholder-text {
+    background: var(--card-bg);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 8px #000a, 0 1px 0 #222;
+}
+
+/* Remove hover effect */
+.placeholder-image:hover,
+.placeholder-text:hover {
+    /* No hover effect */
+}
+
+/* Make image placeholder scale to most of the page */
+.large-placeholder-image {
+    width: 90vw;
+    max-width: 900px;
+    height: 40vw;
+    max-height: 400px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+    background: var(--placeholder-bg);
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 
+        height 0.4s cubic-bezier(.4,2,.6,1),
+        min-height 0.4s cubic-bezier(.4,2,.6,1),
+        max-height 0.4s cubic-bezier(.4,2,.6,1),
+        transform 0.25s,
+        box-shadow 0.25s;
+    min-height: 120px;
+}
+
+.large-placeholder-image:hover {
+    transform: scale(1.03) rotate(-1deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--card-bg);
+    color: var(--primary-text);
+    border: none;
+    border-radius: 50%;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 2;
+}
+.close-btn:hover {
+    background: var(--nav-hover-bg);
+}
+
+/* Blurry background image for all pages */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center center / cover no-repeat;
+    background-attachment: fixed;
+    filter: blur(16px) brightness(0.7);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Ensure header content stays on one level and is responsive */
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+    background: none;
+}
+
+.header-bar > * {
+    flex-shrink: 0;
+}
+
+.header-bar nav ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: none;
+}
+
+.header-bar nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 800px) {
+    .header-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    .header-bar nav ul {
+        justify-content: center;
+        gap: 1rem;
+    }
+    .theme-switcher-wrapper {
+        margin-right: 0;
+        align-self: flex-start;
+    }
+}
+
+/* Title styles for different pages */
+.title-home,
+.title-about {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: var(--primary-text);
+    text-align: center;
+}
+
