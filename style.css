@@ -32,6 +32,17 @@ body {
     flex-direction: column;
     background: var(--primary-bg);
     color: var(--primary-text);
+    animation: fadeInBody 1s ease;
+    transition: background 0.5s, color 0.5s, filter 0.5s, opacity 0.5s;
+}
+
+@keyframes fadeInBody {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 header {
@@ -307,5 +318,47 @@ body::before {
     margin: 1rem 0;
     color: var(--primary-text);
     text-align: center;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: 2rem auto;
+    background: var(--card-bg);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 12px 40px 0 rgba(0,0,0,0.35), 0 2px 8px 0 rgba(0,0,0,0.18); /* More visible shadow */
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--primary-text);
+}
+
+/* Light mode styles */
+body.light-mode {
+    --primary-bg: #e5e5e5;
+    --primary-text: #232323;
+    --accent: #4CAF50;
+    --header-bg: #f0f0f0cc;
+    --nav-bg: #e0e0e0;
+    --nav-hover-bg: #d0d0d0;
+    --nav-hover-text: #232323;
+    --footer-bg: #d6d6d6;
+    --footer-text: #232323;
+    --placeholder-bg: #e0e0e0;
+    --placeholder-text: #232323;
+    --card-bg: #f3f3f3;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    background: var(--primary-bg);
+    color: var(--primary-text);
+}
+
+body.light-mode .about-content,
+body.light-mode .home-content {
+    color: var(--primary-text);
+    background: var(--card-bg);
+}
+
+body.light-mode footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
 }
 

@@ -74,9 +74,52 @@
             margin: 1.5rem 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        #light-mode-toggle {
+            position: fixed;
+            left: 2rem;
+            bottom: 5.5rem;
+            z-index: 1000;
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 50%;
+            border: none;
+            background: var(--card-bg, #f0f0f0);
+            color: #222;
+            font-size: 1.7rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+            opacity: 0.92;
+        }
+        #light-mode-toggle:hover {
+            background: #e0e0e0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+            transform: scale(1.08);
+        }
+        body.light-mode {
+            --primary-text: #232323;
+            --card-bg: #f3f3f3;
+            --nav-bg: #e9e9e9;
+            --nav-hover-bg: #d6d6d6;
+            --nav-hover-text: #232323;
+            --placeholder-bg: #e0e0e0;
+            background: #ededed;
+        }
+        body.light-mode .about-content {
+            color: var(--primary-text);
+            background: var(--card-bg);
+        }
+        body.light-mode footer {
+            background: var(--nav-bg);
+            color: var(--primary-text);
+        }
     </style>
 </head>
 <body>
+    <!-- Consistent Header -->
     <header>
         <div class="header-bar">
             <h1 style="margin: 0;">bambusnetz</h1>
@@ -104,11 +147,20 @@
                     This page is part of a demo project. You can use it as a starting point for your own website or as a playground for learning HTML and CSS.
                 </p>
                 <!-- Safe: Only reference images you control -->
-                <div class="placeholder-image" style="background-image: url('my-image.jpg');"></div>
+                <div style="margin: 1.5rem 0; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.18);">
+                    <iframe width="100%" height="315"
+                        src="https://www.youtube.com/embed/WOCUYdKakN8?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        style="display: block; border: none;"></iframe>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Consistent Footer -->
+    <button id="light-mode-toggle" aria-label="Switch to light mode"></button>
     <footer>
         <p>&copy; 2023 My Basic Webpage. All rights reserved.</p>
         <p id="impressum">
@@ -147,6 +199,45 @@
                 }, 1200); // Cooldown in ms
             }
         });
+
+        // Light mode toggle
+        const toggleBtn = document.getElementById('light-mode-toggle');
+
+        // Set initial icon based on mode
+        function updateLightModeIcon(fade = false) {
+            if (fade) {
+                toggleBtn.style.transition = 'opacity 0.3s';
+                toggleBtn.style.opacity = '0';
+                setTimeout(() => {
+                    toggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+                    toggleBtn.style.opacity = '1';
+                }, 200);
+            } else {
+                toggleBtn.innerHTML = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+            }
+        }
+        updateLightModeIcon();
+
+        // Fade transition for mode switch
+        function fadeBodyTransition() {
+            document.body.style.transition = 'background 0.5s, color 0.5s, filter 0.5s, opacity 0.5s';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            fadeBodyTransition();
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('lightMode', document.body.classList.contains('light-mode') ? '1' : '0');
+            updateLightModeIcon(true); // fade icon
+        });
+
+        if (localStorage.getItem('lightMode') === '1') {
+            document.body.classList.add('light-mode');
+            updateLightModeIcon();
+        }
     </script>
 </body>
 </html>
